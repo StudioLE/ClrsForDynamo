@@ -56,15 +56,21 @@
     <PackageReference Include="DynamoVisualProgramming.ZeroTouchLibrary" Version="2.1.*">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Drawing.Common">
+      <Version>4.7.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="manifests\pkg.json" />
     <None Include="manifests\Clrs_DynamoCustomization.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Clr.cs" />
+    <Compile Include="src\Color.cs" />
     <Compile Include="src\HelloDynamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
