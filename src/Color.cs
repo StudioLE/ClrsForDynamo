@@ -11,10 +11,8 @@ namespace Clrs
     /// Colors from clrs.cc a nicer color palette
     /// http://clrs.cc
     /// </summary>
-    public class Color
+    public static class Color
     {
-
-        // Clrs from Clrs.cc
 
         /// <summary>
         /// Return a color by name from clrs.cc a nicer color palette
