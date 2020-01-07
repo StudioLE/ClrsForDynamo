@@ -10,6 +10,7 @@ namespace Clrs
     class Clr
     {
         private string hex;
+        private int alpha;
         private int red;
         private int green;
         private int blue;
@@ -24,9 +25,10 @@ namespace Clrs
             blue = Convert.ToInt16(color.B);
         }
 
-        public DSCore.Color ByARGB()
+        public DSCore.Color ByARGB(int a = 255)
         {
-            return DSCore.Color.ByARGB(255, red, green, blue);
+            alpha = a;
+            return DSCore.Color.ByARGB(a, red, green, blue);
         }
 
     }

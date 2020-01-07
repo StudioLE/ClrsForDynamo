@@ -18,8 +18,9 @@ namespace Clrs
         /// Return a color by name from clrs.cc a nicer color palette
         /// </summary>
         /// <param name="name">Color Name</param>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color ByName(string name)
+        public static DSCore.Color ByName(string name, int alpha = 255)
         {
             // This function uses Reflections to invoke the method of the specified name.
             // If the method name doesn't exist it throws an exception
@@ -37,160 +38,178 @@ namespace Clrs
             MethodInfo theMethod = thisType.GetMethod(name, BindingFlags.Public | BindingFlags.Static);
 
             // Invoke the method with null params as it's static and parmeterless then force its return type to be DSCore.Color
-            return (DSCore.Color)theMethod.Invoke(null, null);
+            return (DSCore.Color)theMethod.Invoke(null, new object[] { alpha });
         }
 
         /// <summary>
         /// Aqua from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Aqua()
+        /// 
+        public static DSCore.Color Aqua(int alpha = 255)
         {
-            return new Clr("#7fdbff").ByARGB();
+            return new Clr("#7fdbff").ByARGB(alpha);
         }
 
         /// <summary>
         /// Blue from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Blue()
+        public static DSCore.Color Blue(int alpha = 255)
         {
-            return new Clr("#0074d9").ByARGB();
+            return new Clr("#0074d9").ByARGB(alpha);
         }
 
         /// <summary>
         /// Lime from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Lime()
+        public static DSCore.Color Lime(int alpha = 255)
         {
-            return new Clr("#01ff70").ByARGB();
+            return new Clr("#01ff70").ByARGB(alpha);
         }
 
         /// <summary>
         /// Navy from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Navy()
+        public static DSCore.Color Navy(int alpha = 255)
         {
-            return new Clr("#001f3f").ByARGB();
+            return new Clr("#001f3f").ByARGB(alpha);
         }
 
         /// <summary>
         /// Teal from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Teal()
+        public static DSCore.Color Teal(int alpha = 255)
         {
-            return new Clr("#39cccc").ByARGB();
+            return new Clr("#39cccc").ByARGB(alpha);
         }
 
         /// <summary>
         /// Olive from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Olive()
+        public static DSCore.Color Olive(int alpha = 255)
         {
-            return new Clr("#3d9970").ByARGB();
+            return new Clr("#3d9970").ByARGB(alpha);
         }
 
         /// <summary>
         /// Green from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Green()
+        public static DSCore.Color Green(int alpha = 255)
         {
-            return new Clr("#2ecc40").ByARGB();
+            return new Clr("#2ecc40").ByARGB(alpha);
         }
 
         /// <summary>
         /// Red from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Red()
+        public static DSCore.Color Red(int alpha = 255)
         {
-            return new Clr("#ff4136").ByARGB();
+            return new Clr("#ff4136").ByARGB(alpha);
         }
 
         /// <summary>
         /// Maroon from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Maroon()
+        public static DSCore.Color Maroon(int alpha = 255)
         {
-            return new Clr("#85144b").ByARGB();
+            return new Clr("#85144b").ByARGB(alpha);
         }
 
         /// <summary>
         /// Orange from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Orange()
+        public static DSCore.Color Orange(int alpha = 255)
         {
-            return new Clr("#ff851b").ByARGB();
+            return new Clr("#ff851b").ByARGB(alpha);
         }
 
         /// <summary>
         /// Purple from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Purple()
+        public static DSCore.Color Purple(int alpha = 255)
         {
-            return new Clr("#b10dc9").ByARGB();
+            return new Clr("#b10dc9").ByARGB(alpha);
         }
 
         /// <summary>
         /// Yellow from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Yellow()
+        public static DSCore.Color Yellow(int alpha = 255)
         {
-            return new Clr("#ffdc00").ByARGB();
+            return new Clr("#ffdc00").ByARGB(alpha);
         }
 
         /// <summary>
         /// Fuchsia from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Fuchsia()
+        public static DSCore.Color Fuchsia(int alpha = 255)
         {
-            return new Clr("#f012be").ByARGB();
+            return new Clr("#f012be").ByARGB(alpha);
         }
 
         /// <summary>
         /// Gray from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Gray()
+        public static DSCore.Color Gray(int alpha = 255)
         {
-            return new Clr("#aaaaaa").ByARGB();
+            return new Clr("#aaaaaa").ByARGB(alpha);
         }
 
         /// <summary>
         /// White from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color White()
+        public static DSCore.Color White(int alpha = 255)
         {
-            return new Clr("#ffffff").ByARGB();
+            return new Clr("#ffffff").ByARGB(alpha);
         }
 
         /// <summary>
         /// Black from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Black()
+        public static DSCore.Color Black(int alpha = 255)
         {
-            return new Clr("#111111").ByARGB();
+            return new Clr("#111111").ByARGB(alpha);
         }
 
         /// <summary>
         /// Silver from clrs.cc a nicer color palette
         /// </summary>
+        /// <param name="alpha">Alpha</param>
         /// <returns>Color</returns>
-        public static DSCore.Color Silver()
+        public static DSCore.Color Silver(int alpha = 255)
         {
-            return new Clr("#dddddd").ByARGB();
+            return new Clr("#dddddd").ByARGB(alpha);
         }
 
     }
