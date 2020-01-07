@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +75,45 @@
     <Compile Include="src\HelloDynamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="src\Resources\ClrsImages.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\Resources\Clrs.Color.Aqua.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Aqua.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Black.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Black.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Blue.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Blue.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Fuchsia.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Fuchsia.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Gray.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Gray.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Green.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Green.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Lime.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Lime.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Maroon.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Maroon.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Navy.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Navy.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Olive.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Olive.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Orange.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Orange.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Purple.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Purple.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Red.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Red.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Silver.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Silver.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Teal.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Teal.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.White.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.White.Small.png" />
+    <Content Include="src\Resources\Clrs.Color.Yellow.Large.png" />
+    <Content Include="src\Resources\Clrs.Color.Yellow.Small.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -88,6 +128,17 @@
     <DyfFolder>$(PackageFolder)dyf\</DyfFolder>
   </PropertyGroup>
   <Target Name="AfterBuild">
+    <!-- Get System.Drawing.dll -->
+    <GetReferenceAssemblyPaths TargetFrameworkMoniker=".NETFramework, Version=v4.7">
+      <Output TaskParameter="FullFrameworkReferenceAssemblyPaths" PropertyName="FrameworkAssembliesPath" />
+    </GetReferenceAssemblyPaths>
+    <!-- Get assembly -->
+    <GetAssemblyIdentity AssemblyFiles="$(OutDir)$(TargetName).dll">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyInfo" />
+    </GetAssemblyIdentity>
+    <!-- Generate customization dll -->
+    <GenerateResource SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" UseSourcePath="true" Sources="$(ProjectDir)src\Resources\ClrsImages.resx" OutputResources="$(ProjectDir)src\Resources\ClrsImages.resources" References="$(FrameworkAssembliesPath)System.Drawing.dll" />
+    <AL SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" TargetType="library" EmbedResources="$(ProjectDir)src\Resources\ClrsImages.resources" OutputAssembly="$(OutDir)Clrs.customization.dll" Version="%(AssemblyInfo.Version)" />
     <ItemGroup>
       <Dlls Include="$(OutDir)*.dll" />
       <Pdbs Include="$(OutDir)*.pdb" />
