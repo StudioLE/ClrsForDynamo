@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="src\Clr.cs" />
     <Compile Include="src\Color.cs" />
-    <Compile Include="src\HelloDynamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
